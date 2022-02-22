@@ -1,0 +1,69 @@
+guy_lutsker
+
+lior.sivan1, nivi shenker, anat hornreich, eden deri, tal boazi, or amar
+
+=============================
+=      File description     =
+=============================
+BoopingSite.java - search engine to find hotels
+BoopingSiteTest.java - test
+CompareByDistanceAndPOI.java - comparator class to sort by distance from point and by POI
+CompareByRatingAndName.java - comparator class to sort by star rating and by name
+Locker.java - represents a locker in the ship
+LockerTest.java - test of locker
+LongTermStorage.java - LTS system on board
+LongTermTest.java - test of LTS
+SpaceShipDepository.java - test of all storage systems on board
+Storage.java - abstract class for storage systems on board
+=============================
+=          Design           =
+=============================
+
+StarShip Depository part:
+i chose to build a parent abstract class for the locker and the LTS.
+the abstract class holds all the methods/variables that are in common to the locker and the LTS.
+i chose to build an abstract class and not any other design pattern because in this project because
+this relation between the objects is clearly a "is a" relationship, ans so the abstract class only
+hold methods and variables that both locker, and LTS have in common.
+i also chose to implement in both locker and LTS a hashmap.
+hashmap is very crucial here because it will act as a dictionary for the items we try to put in
+the locker/LTS and so it will store them and allows us to access them quickly - o(1).
+it will also let us create new keys and values quickly - o(1).
+i chose to store and use the hash map in very similar ways between locker and the LTS
+because the use the same functionality, and there were not too different in the way they
+use, store, and access the hashmap.
+
+
+Hotel Search Engine part:
+i implemented here two comparator classes, CompareByRatingAndName and CompareByDistanceAndPOI
+the first will take an array of hotels and will sort it by its star rating from highest to lowest
+while also managing a secondary sort witch will take the values witch are equal in the star rating and
+will sort them alphabetically according to their property name.
+the second one will take an array on hotels and will do the same primary/secondary sort described
+above, and will implement it for and sorting by a distance from a given point(uclidian distance)
+and then by the number of points of interest(POI) that hotels has.
+i chose to use those classes as comparator and implement them as Comparator<Hotel>.
+those will take an array of hotels and sort them accordingly.
+i also chose to include limitations on the program that come from the real world - in the real world
+latitude and longitude go from -90 to 90 and from -180 to 180 respectively, and so coordinates witch
+wont follow this rule will generate an empty array in hotels.
+
+i also implemented several tests on each of the files -
+tests for the locker, LTS, depository, and booping. all those are included and my code was tested with
+them extensively so hopefully there aren't many bugs:)
+
+in addition i tried to keep incapsulation in mind while building this project, i tried to keep
+the testing units as discrete as possible and tried to manage this program well.
+
+
+=============================
+=  Implementation details   =
+=============================
+i chose to use inheritance in this project because it seemed like the right option with the
+locker and LTS since they both are a kind on storage unit - granted, they are different but they both
+have very similar functionality and so they could share a lot of the code with a parent abstract
+class that they both could inherent from.
+
+=============================
+=    Answers to questions   =
+=============================

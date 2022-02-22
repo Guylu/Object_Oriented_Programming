@@ -1,0 +1,32 @@
+guy_lutsker
+
+lior.sivan1 yael.porat3
+
+
+=============================
+=      File description     =
+=============================
+Book.java - 
+Library.java - 
+Patron.java - 
+
+=============================
+=          Design           =
+=============================
+i implemented this program with 3 classes with each their own API.
+the book class describes a book with has owners and has certain values.
+the patron class describes a person wants to take a book he enjoys, has their enjoyment threshold etc..
+and the library class handles registers patron taking books from the library that they enjoy, and returning
+them.
+
+
+=============================
+=  Implementation details   =
+=============================
+ my implementation has certain fields to hold information in the library like arrays to hold information
+ such as witch books are in the library, with ones are available and witch patrons are registered..
+
+
+=============================
+=    Answers to questions   =
+=============================et took 0.3445 seconds, While the run time of the HashSet took 0.56547.

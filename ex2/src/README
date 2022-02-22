@@ -1,0 +1,56 @@
+guy_lutsker
+
+lior.sivan1 yael.porat3 talian
+
+=============================
+=      File description     =
+=============================
+AggressiveShip.java
+BasherShip.java
+DrunkardShip.java
+HumanShip.java
+RunnerShip.java
+SpaceShip.java
+SpaceShipFactory.java
+SpecialShip.java
+
+=============================
+=          Design           =
+=============================
+i decided to split the different SpaceShips into their own subclasses with inheritance.
+each spaceship has its own overrides and work independently of each other.
+each spaceship acts differently and so they all have their own "doAction" methods.
+the fact that i built my code in the way means that the code is very easy to change -
+since every thing is independent of each other, i can make changes without worrying that i will
+accidentally cause a "bug" in another part of the program.
+also the program in very modular because each spaceship interacts with the API by their own.
+(i hope) it is written in an Intuitively and understandably manner.
+
+
+=============================
+=  Implementation details   =
+=============================
+i decided to leave the "doAction" method in the SpaceShip class, and to write there code that is
+in common to all the spaceship such as turning to shield off, lowering cooldown time etc..
+in addition i decided to send the enemy picture by default in the getImage method, and only overrode
+it once, in the human spaceship, because its the only one that is different.
+
+=============================
+=    Answers to questions   =
+=============================
+
+1. drunkardship design - i chose to implement this part using the "java.util.Random" library.
+each option the spaceship can do(move teleport etc..) is decided randomly.
+i generate a random number rnd1 between 0 and 6,that handles turning. half the time it will go
+to the right and half thr time to the left.
+i generate another random number rnd2 between 0 and 1, and if rnd1>rnd2, it will accelerate.
+it will do similar random tests to then try and shoot, put shields up, and teleport..
+
+all the number were chosen by trial and error, seeing what will generate the most random and weird
+behavior that will use all the action the spaceship can do.
+
+2. special spaceship -  i call this "THE GREEZLY BREAR!"
+this ship is controlled by a scary greezly bear, witch does not want to be disturbed.
+this bear will not actively try to attack you, unless you provoke it - enter its danger radius.
+IF you provoke it, he will chase you out of its danger radius, by shooting you.
+if however the bear is damaged enough, it will try to teleport out of any battle.
