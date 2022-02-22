@@ -1,0 +1,91 @@
+guy_lutsker
+
+lior.sivan1, nivi shenker, eden deri, tal boazi, or amar, talia dor
+
+=============================
+=      File description     =
+=============================
+
+\filesprocessing:
+DirectoryProcessor.java - main class to manage the entire project
+
+Section.java -a section in the command file,
+a section consists of a filter and an order
+
+SectionFactory.java - factory to make the sections of filters and orders by the data which was
+created from the commands file
+
+
+\filesprocessing\Filters:
+All.java -filter that filters nothing
+Between.java -filter that filters files which size in kb is between to given numbers 
+Contains.java -filter that filters by which files names contain a given string
+Executable.java -filter that filters by which files are executable
+FileFilter.java -filter that filters by which files name are exactly the string given
+Filter.java - abstract an abstract filter
+GreaterThan.java -filter that filters files which size is larger than the given number 
+Hidden.java -filter that filters files that are hidden
+Prefix.java -filter that filters files which start with the given string
+SmallerThan.java -filter that filters files which size is smaller than the given number
+Suffix.java -filter that filters files which end with the given string
+Writable.java -filter that filters files that are hidden
+
+
+\filesprocessing\Orders:
+Abs.java - an orders which orders files by absolute path
+Order.java - abstract an abstract order
+QuickSortFileArray.java -class to preform quickSort
+Size.java - oder that orders files by size of file
+Type.java - order that orders by the type of file(alphabetical)
+
+Exceptions:
+\filesprocessing\ProjectExceptions:
+InvalidFilterValue.java - when the line following the line FILTER in not a valid filter
+InvalidOrderValue.java - when the line following the line ORDER in not a valid order command
+MissingCommand.java - when line FILTER/ORDER doesn't appear where it is supposed to
+MissingDirectory.java - when there is a problem with the given directory
+MissingFile.java - when there is a problem with the given commands file
+NegativeFilterValue.java - when a filters description that needs to filter an integer is negative
+Type1.java - exception of type1 as explained in the pdf
+Type2.java - exception of type2 as explained in the pdf
+
+
+=============================
+=          Design           =
+=============================
+
+I decided to design this program using the design pattern learned in class - the factory design.
+the program has an object called section, which contains a filter and an order. this are parsed from the
+commands file and then are translated into an arraylist of section in the factory, then when the factory
+creates the arraylist it returns it to the main, and there it can act as the actual logic of the commands.
+the files from the source directory are sifted by the section objects in the arraylist.
+we are left with the results of the commands file upon the source directory files, the results are
+then printed.
+
+My exception are all organized un a way that they all inherit from 2 basic kinds of exceptions
+type1 and type2 as explained in the pdf.
+i have all kinds of exception of type1 - can be seen in the File description category of the README file.
+all type 1 exceptions are thrown in the Filters\Orders and caught in the factory to then make a default
+filter(all) or a default order(abs).
+in addition the type2 exceptions are all thrown in the parser method which takes the data from the txt file
+that contains all the commands, and tries to make it into a readable list of commands my program can work with
+essentially it tries to divide the data into sections.
+if it is unable to, because of a problem with the commands conformation - as explained in the pdf.
+those types are to be thrown precisely when they are founds in the parser method. these exception are caught
+in the main and result in printing an error and terminating the program.
+
+=============================
+=  Implementation details   =
+=============================
+
+I chose to implement the factory clarification by enums that i made in the main.
+the enums are made to make the program much more type safe.
+
+The sorting algorithm of choice was quicksort.
+i chose quicksort because it is the most efficient algorithms code we have learned about.
+i transformed the quicksort algorithm to handle files instead of integers, and to have it be modular
+so that it could order by a numbers of order(abs, type...).
+
+=============================
+=    Answers to questions   =
+=============================
